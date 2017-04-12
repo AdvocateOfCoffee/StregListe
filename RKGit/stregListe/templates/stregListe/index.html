@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    {% load bootstrap3 %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+      .overskrift {
+        text-align: center;
+        background-color: black;
+        text-decoration: underline;
+        color: #3ba2bd
+      }
+
+      .ramme {
+        border: 2px solid black;
+      }
+
+    </style>
+</head>
+
+<body>
+  <div class="jumbotron overskrift">
+    <h1>Hvem har drukket mest?</h1>
+  </div>
+
+  <div class="container">
+    <table class="table table-hover table-bordered ramme">
+   <thead>
+     <tr>
+       <th>Navn</th>
+       <th>Antal bajere</th>
+     </tr>
+   </thead>
+   <tbody>
+       {% for Vejleder in data  %}
+        {% if Vejleder.nrBeers <= 10 %}
+          <tr class="danger">
+        {% else %}
+          <tr class="success">
+        {% endif %}
+          <td>{{Vejleder.name}}</td>
+          <td>{{Vejleder.nrBeers}}</td>
+        </tr>
+       {% endfor %}
+   </tbody>
+ </table>
+  </div>
+</body>
+</html>
